@@ -6,7 +6,7 @@ const Input = ({ icon: Icon, ...props }) => {
 			</div>
 			<input
 				{...props}
-				className="w-full md:w-[26vw] px-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-gray-600"
+				className="w-full md:w-[26vw] px-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-600"
 			/>
 		</div>
 	);

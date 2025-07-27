@@ -76,7 +76,7 @@ function ForgotPassword() {
                         </form>
                         <div className='mt-10 ml-2'> 
 
-                    <span>Get back to</span> <Link className='text-gray-800 hover:text-gray-700' to="/login">Login</Link>
+                    <span className='font-semibold '>Get back to</span> <Link className='font-medium text-gray-800 hover:text-gray-700' to="/login">Login</Link>
                         </div>
                     </div>
                 </motion.div>

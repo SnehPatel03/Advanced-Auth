@@ -52,7 +52,7 @@ function Verify() {
       console.log("Verification response:", response);
       toast.success("Verification successful!");
 
-      localStorage.removeItem("email");
+
       setOtp(["", "", "", "", ""]);
       navigateTo("/profile");
     } catch (error) {

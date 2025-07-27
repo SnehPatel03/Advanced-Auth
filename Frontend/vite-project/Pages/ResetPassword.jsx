@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
+import toast from "react-hot-toast"
 function ResetPassword() {
   const [password, setpassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
@@ -22,14 +22,14 @@ function ResetPassword() {
           headers: { "Content-Type": "application/json" },
         }
       );
-
-      alert(response.data.message || "Password Updated Successfully");
+console.log("responese",response)
+      toast.success(response.data.message || "Password Updated Successfully");
       setconfirmPassword("");
       setpassword("");
       navigateTo("/login");
     } catch (error) {
       console.error("Reset password error:", error.response?.data || error.message);
-      alert(error.response?.data?.message || "Something went wrong");
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -56,7 +56,7 @@ function ResetPassword() {
           </div>
 
           <div>
-            
+
             <input
               type="password"
               placeholder="Confirm new password"
@@ -70,7 +70,7 @@ function ResetPassword() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#565656] text-white py-2 rounded-lg hover:bg-gray-800  transition duration-700"
+            className="w-full bg-[#565656] text-white py-2 rounded-lg hover:bg-gray-800 font-semibold transition duration-700"
           >
             {loading ? "Resetting..." : "Reset Password"}
           </button>

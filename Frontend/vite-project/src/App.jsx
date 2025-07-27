@@ -11,10 +11,12 @@ import Register from '../Pages/Register'
 import ForgotPassword from '../Pages/ForgotPassword'
 
 
+
 function App() {
 
   return (
-    <>
+    
+      <>
       <Routes>
         <Route path='/' element={<Root />} />
         <Route path='/register' element={<Register />} />
@@ -26,7 +28,8 @@ function App() {
         <Route path='/forgotPassword' element={<ForgotPassword />} />
       </Routes>
        <Toaster />
-    </>
+    </>   
+       
   )
 }
 

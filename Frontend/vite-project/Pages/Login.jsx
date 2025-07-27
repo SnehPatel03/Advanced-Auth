@@ -6,6 +6,7 @@ import Input from '../components/Input';
 import { FiUser } from "react-icons/fi";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { MdOutlinePassword } from "react-icons/md";
+import toast from 'react-hot-toast';
 
 
 function Login() {
@@ -23,16 +24,19 @@ function Login() {
           "Content-Type": "application/json"
         }
       })
-      alert(response.message || "User Loggedin Successfully.")
+      toast.success(response.message || "User Loggedin Successfully.")
+      console.log(response)
 
-      // localStorage.setItem("jwt", response.data.token)
+      localStorage.setItem("jwt", response.data.token)
+      localStorage.setItem("email", email)
+      
 
       setemail("")
       setpassword("")
       navigateTo("/profile")
 
     } catch (error) {
-      alert(error.response)
+      toast.error(error.response.data.message)
       console.log("error in Log in Fetching from backend", error)
     }
 
@@ -89,7 +93,7 @@ function Login() {
 
             <div className="mt-10 flex gap-2 items-center justify-center">
               <span className="text-sm text-gray-500">Don't have an account?</span>
-              <Link to="/register" className="text-sm text-gray-400 hover:text-gray-500 capetalize">
+              <Link to="/register" className="text-sm text-gray-400 duration-700 hover:text-gray-500 capetalize">
                 Signin
               </Link>
             </div>

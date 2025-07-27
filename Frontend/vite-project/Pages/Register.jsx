@@ -28,7 +28,9 @@ function Register() {
             })
             toast.success(response.message || "User Registration Successfully.")
             localStorage.setItem("jwt", response.data.token)
-            localStorage.setItem("email",email)
+            localStorage.setItem("email", email)
+            localStorage.setItem("name", name)
+
             setname("")
             setemail("")
             setpassword("")
@@ -38,7 +40,7 @@ function Register() {
             toast.error(error.response.data.message)
             console.log("error in sign in Fetching from backend", error)
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
 
     }
@@ -124,7 +126,7 @@ function Register() {
 
                         <div className="mt-10 flex gap-2 items-center justify-center">
                             <span className="text-sm text-gray-500">Already have an account?</span>
-                            <Link to="/login" className="text-sm text-gray-400 hover:text-gray-500 capetalize">
+                            <Link to="/login" className="text-sm text-gray-400 hover:text-gray-500 duration-700  capetalize">
                                 Login
                             </Link>
                         </div>
