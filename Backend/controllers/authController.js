@@ -184,7 +184,7 @@ export const forgetPassword = async (req, res) => {
   const resetToken = user.getResetPasswordCode();
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `https://advanced-auth-3v6r.onrender.com/password/reset/${resetToken}`;
   const message = generateResetPasswordEmailTemplate(resetPasswordUrl);
 
   try {

@@ -11,7 +11,7 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: "https://advanced-auth-3v6r.onrender.com",
     methods: ["GET", "POST", "UPDATE", "DELETE", "PUT"],
     credentials: true,
   })
