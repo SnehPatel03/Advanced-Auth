@@ -12,7 +12,7 @@ function Profile() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/auth/logout', {
+      const response = await axios.get('https://advanced-auth-6ech.onrender.com/auth/logout', {
         withCredentials: true,
         headers: { 'Content-Type': 'application/json' },
       });

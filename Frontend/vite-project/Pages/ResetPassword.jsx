@@ -15,7 +15,7 @@ function ResetPassword() {
 
     try {
       const response = await axios.put(
-        `http://localhost:4000/auth/password/reset/${token}`,
+        `https://advanced-auth-6ech.onrender.com/auth/password/reset/${token}`,
         { password, confirmPassword },
         {
           withCredentials: true,

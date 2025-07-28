@@ -19,7 +19,7 @@ function Register() {
         e.preventDefault()
         setLoading(true);
         try {
-            const response = await axios.post("http://localhost:4000/auth/register", {
+            const response = await axios.post("https://advanced-auth-6ech.onrender.com/auth/register", {
                 name, email, password
             }, {
                 withCredentials: true, headers: {

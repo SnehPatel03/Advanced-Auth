@@ -16,7 +16,7 @@ function UpdatePassword() {
 
     try {
       const response = await axios.put(
-        `http://localhost:4000/auth/password/update`,
+        `https://advanced-auth-6ech.onrender.com/auth/password/update`,
         { currentPassword, newPassword, confirmPassword },
         {
           withCredentials: true,

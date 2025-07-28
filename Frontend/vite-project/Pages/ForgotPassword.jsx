@@ -15,7 +15,7 @@ function ForgotPassword() {
         e.preventDefault()
 
         try {
-            const response = await axios.post("http://localhost:4000/auth/password/forgot", {
+            const response = await axios.post("https://advanced-auth-6ech.onrender.com/auth/password/forgot", {
                 email
             }, {
                 withCredentials: true, headers: {

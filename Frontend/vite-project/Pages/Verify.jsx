@@ -39,7 +39,7 @@ function Verify() {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:4000/auth/verify", {
+      const response = await axios.post("https://advanced-auth-6ech.onrender.com/auth/verify", {
         email,
         otp: otpCode
       }, {

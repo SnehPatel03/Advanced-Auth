@@ -17,7 +17,7 @@ function Login() {
     e.preventDefault()
 
     try {
-      const response = await axios.post("http://localhost:4000/auth/login", {
+      const response = await axios.post("https://advanced-auth-6ech.onrender.com/auth/login", {
         email, password
       }, {
         withCredentials: true, headers: {
