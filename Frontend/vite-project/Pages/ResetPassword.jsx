@@ -22,7 +22,7 @@ function ResetPassword() {
           headers: { "Content-Type": "application/json" },
         }
       );
-console.log("responese",response)
+      console.log("responese", response)
       toast.success(response.data.message || "Password Updated Successfully");
       setconfirmPassword("");
       setpassword("");

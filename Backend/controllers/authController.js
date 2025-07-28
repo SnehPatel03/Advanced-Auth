@@ -189,7 +189,7 @@ export const forgetPassword = async (req, res) => {
 
   try {
     await sendMail({
-      email: user.email,
+      email: user.email,  
       subject: "Auth Co. Password Reset Code",
       message,
     });
