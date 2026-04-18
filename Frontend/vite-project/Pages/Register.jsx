@@ -19,14 +19,14 @@ function Register() {
         e.preventDefault()
         setLoading(true);
         try {
-            const response = await axios.post("https://advanced-auth-6ech.onrender.com/auth/register", {
+            const response = await axios.post("http://localhost:4000/auth/register", {
                 name, email, password
             }, {
                 withCredentials: true, headers: {
                     "Content-Type": "application/json"
                 }
             })
-            toast.success(response.message || "User Registration Successfully.")
+            toast.success(response.data?.message || "User Registration Successfully.")
             localStorage.setItem("jwt", response.data.token)
             localStorage.setItem("email", email)
             localStorage.setItem("name", name)
@@ -37,7 +37,7 @@ function Register() {
             navigateTo("/verify")
 
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error.response?.data?.message || "Registration failed")
             console.log("error in sign in Fetching from backend", error)
         } finally {
             setLoading(false);

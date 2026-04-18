@@ -11,18 +11,23 @@ export const register = async (req, res) => {
   try {
     console.log("BODY_RECEIVED", req.body);
     const { name, email, password } = req.body;
+    const normalizedEmail = email?.trim().toLowerCase();
+
     if (!name || !email || !password) {
       return res.status(404).json({ message: "Enter all Cardensials" });
     }
 
-    const isRegistered = await User.findOne({ email, accountVerified: true });
+    const isRegistered = await User.findOne({
+      email: normalizedEmail,
+      accountVerified: true,
+    });
 
     if (isRegistered) {
       return res.status(404).json({ message: "User Already Exist" });
     }
 
     const verificationAttempts = await User.find({
-      email,
+      email: normalizedEmail,
       accountVerified: false,
     });
 
@@ -44,7 +49,7 @@ export const register = async (req, res) => {
     const user = await User.create({
       name,
       password: hashedPassword,
-      email,
+      email: normalizedEmail,
     });
 
     const verificationCode = user.generateVerificationCode();
@@ -52,14 +57,7 @@ export const register = async (req, res) => {
       res.status(404).json({ message: "verificationCode not Found" });
     }
     await user.save();
-    const codeSent = await sendVerificationCode(email, verificationCode);
-
-    if (!codeSent) {
-      return res.status(500).json({
-        success: false,
-        message: "Failed to send verification code. Please try again later.",
-      });
-    }
+    await sendVerificationCode(normalizedEmail, verificationCode);
 
     sendToken(
       user,
@@ -68,7 +66,11 @@ export const register = async (req, res) => {
       res
     );
   } catch (error) {
-    console.log("error", error);
+    console.error("Registration error:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Registration failed",
+    });
   }
 };
 export const otpVerify = async (req, res) => {
@@ -184,7 +186,7 @@ export const forgetPassword = async (req, res) => {
   const resetToken = user.getResetPasswordCode();
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `https://advanced-auth-3v6r.onrender.com/password/reset/${resetToken}`;
+  const resetPasswordUrl = `http://localhost:5173/password/reset/${resetToken}`;
   const message = generateResetPasswordEmailTemplate(resetPasswordUrl);
 
   try {

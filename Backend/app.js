@@ -11,12 +11,11 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: "https://advanced-auth-3v6r.onrender.com",
+    origin: ["http://localhost:5173"],
     methods: ["GET", "POST", "UPDATE", "DELETE", "PUT"],
     credentials: true,
   })
 );
-
 
 app.use(express.json());
 app.use(cookieParser()); 
